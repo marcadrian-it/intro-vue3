@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GOT!</title>
+  </head>
+  <body>
+    <h1>Game of thrones happy site!</h1>
+    <div id="app">
+      {{ message }}
+      <ul>
+        <li v-for="actor in gameofthronesactors">{{ actor }}</li>
+      </ul>
+      <p>there are no characters</p>
+      <ul>
+        <li v-for="character in gotcharacters">
+          {{character}}
+          <button
+            @click="addToFavorite(
+            character
+          )"
+          >
+            Favorite
+          </button>
+        </li>
+      </ul>
+      <p>Favorite characters</p>
+      <ul>
+        <li v-for="character in favoritedcharacters">{{character}}</li>
+      </ul>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const { createApp } = Vue;
+      const app = createApp({
+        data() {
+          return {
+            message: 'Hello GOT fans!',
+            gameofthronesactors: [
+              'Emilia Clarke',
+              'Kit Harrington',
+              'Peter Dinklage',
+              'Nikolaj Coster-Waldau',
+              'Lena Headey',
+              'Sophie Turner',
+              'Maisie Williams',
+              'Isaac Hempstead Wright',
+              'Alfie Allen',
+              'John Bradley',
+              'Gwendoline Christie',
+              'Liam Cunningham',
+              'Nathalie Emmanuel',
+              'Jerome Flynn',
+              'Iain Glen',
+              'Kristofer Hivju',
+              'Rory McCann',
+              'Joe Dempsie',
+              'Jacob Anderson',
+              'Conleth Hill',
+            ],
+            gotcharacters: [
+              'Daenerys Targaryen',
+              'Jon Snow',
+              'Tyrion Lannister',
+              'Jaime Lannister',
+              'Cersei Lannister',
+              'Sansa Stark',
+              'Arya Stark',
+              'Bran Stark',
+              'Theon Greyjoy',
+              'Samwell Tarly',
+              'Brienne of Tarth',
+              'Davos Seaworth',
+              'Missandei',
+              'Bronn',
+              'Jorah Mormont',
+              'Tormund Giantsbane',
+              'Sandor Clegane',
+              'Gendry',
+              'Varys',
+            ],
+            favoritedcharacters: [],
+          };
+        },
+        methods: {
+          addToFavorite(character) {
+            this.favoritedcharacters.push(character);
+          },
+        },
+      });
+
+      app.mount('#app');
+    </script>
+  </body>
+</html>
